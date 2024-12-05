@@ -53,7 +53,7 @@ def process_video(video_path):
     return frame_results
 
 # Interfaz de usuario
-st.title("Clasificador de Imágenes y Videos con ResNet50")
+st.title("Clasificador de Imágenes y Videos con contenido violento mediante la arquitectura ResNet50")
 st.write("Sube una imagen o un video para clasificarlo.")
 
 # Opción para seleccionar tipo de archivo
