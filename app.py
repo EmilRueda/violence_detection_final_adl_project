@@ -3,7 +3,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
 import numpy as np
-import cv2
+from cv2 import resize, VideoCapture
 from PIL import Image
 import tempfile
 import os
@@ -25,7 +25,7 @@ class_names = {0: "Nonviolence", 1: "Violence"}
 # Procesamiento de imágenes
 def preprocess_image(image):
     image_size = 256
-    image = cv2.resize(image, (image_size, image_size))
+    image = resize(image, (image_size, image_size))
     image = img_to_array(image)  # Convertir a matriz numpy
     image = np.expand_dims(image, axis=0)  # Agregar dimensión para lotes
     image = image / 255.0  # Normalización
@@ -34,7 +34,7 @@ def preprocess_image(image):
 
 # Procesamiento de videos
 def process_video(video_path):
-    cap = cv2.VideoCapture(video_path)
+    cap = VideoCapture(video_path)
     frame_results = []
     
     while cap.isOpened():
